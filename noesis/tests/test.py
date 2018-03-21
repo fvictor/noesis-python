@@ -1,5 +1,4 @@
 from unittest import TestCase
-from pkg_resources import resource_filename
 from noesis import Noesis
 
 class Tests(TestCase):
@@ -24,7 +23,7 @@ class Tests(TestCase):
 
     # Models
     def test_erdos_renyi_model(self):
-        erdos_renyi_network = self.ns.create_network_from_model('ErdosRenyi', 100,300)
+        erdos_renyi_network = self.ns.create_network_from_model('ErdosRenyi', 100, 300)
         self.assertEqual(erdos_renyi_network.nodes(), 100)
         self.assertEqual(erdos_renyi_network.links(), 300)
 
