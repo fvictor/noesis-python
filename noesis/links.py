@@ -1,10 +1,12 @@
 import javabridge as jb
-from .utils import get_class_wrapper, java_matrix_to_numpy
+from .utils import get_class_wrapper, java_matrix_to_list_of_lists
 
 class LinkTask():
     
     __PACKAGES__ = ['noesis.analysis.structure.links.prediction.local',
                     'noesis.analysis.structure.links.prediction.global']
+
+    __SCORE_TAIL__ = 'Score'
 
 class LinkScorer(LinkTask):
 
@@ -13,7 +15,7 @@ class LinkScorer(LinkTask):
         self.args = args
 
     def compute(self, network):
-        class_wrapper = get_class_wrapper(self.scorer, LinkScorer.__PACKAGES__)
+        class_wrapper = get_class_wrapper(self.scorer, LinkScorer.__PACKAGES__, LinkScorer.__SCORE_TAIL__)
         link_predictor = class_wrapper(network.__o__, *self.args)
         scorer_wrapper = get_class_wrapper('LinkScorer', ['noesis.analysis.structure.links.scoring'])
         link_scorer = scorer_wrapper(network.__o__, link_predictor)
@@ -29,7 +31,7 @@ class LinkPredictor(LinkTask):
         self.args = args
 
     def compute(self, network):
-        class_wrapper = get_class_wrapper(self.predictor, LinkPredictor.__PACKAGES__)
+        class_wrapper = get_class_wrapper(self.predictor, LinkPredictor.__PACKAGES__, LinkScorer.__SCORE_TAIL__)
         link_predictor = class_wrapper(network.__o__, *self.args)
         matrix = link_predictor.call()
-        return java_matrix_to_numpy(matrix)
+        return java_matrix_to_list_of_lists(matrix)

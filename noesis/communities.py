@@ -16,7 +16,7 @@ class CommunityDetector():
         self.args = args
 
     def compute(self, network):
-        class_wrapper = get_class_wrapper(self.detector, CommunityDetector.__PACKAGES__)
+        class_wrapper = get_class_wrapper(self.detector, CommunityDetector.__PACKAGES__, 'CommunityDetector')
         detector = class_wrapper(network.__o__, *self.args)
         detector.compute()
         result = detector.getResults()

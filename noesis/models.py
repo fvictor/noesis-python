@@ -8,6 +8,6 @@ class NetworkModel(Network):
     """
 
     def __init__(self, model, *args):
-        class_wrapper = get_class_wrapper(model, ['noesis.model.random', 'noesis.model.regular'])
+        class_wrapper = get_class_wrapper(model, ['noesis.model.random', 'noesis.model.regular'], 'Network')
         network = class_wrapper(*args)
         super(NetworkModel, self).__init__(from_network=network)

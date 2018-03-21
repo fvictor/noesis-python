@@ -8,7 +8,7 @@ class Layout():
         self.args = args
 
     def compute(self, network):
-        class_wrapper = get_class_wrapper(self.layout, ['noesis.algorithms.visualization'])
+        class_wrapper = get_class_wrapper(self.layout, ['noesis.algorithms.visualization'], 'Layout')
         layout = class_wrapper(*self.args)
         att_wrapper = get_class_wrapper('Attribute', ['noesis'])
         x = att_wrapper('x')
