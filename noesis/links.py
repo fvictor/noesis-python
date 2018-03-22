@@ -1,5 +1,5 @@
 import javabridge as jb
-from .utils import get_class_wrapper, java_matrix_to_list_of_lists
+from .utils import get_class_wrapper, java_matrix_to_numpy
 
 class LinkTask():
     
@@ -34,4 +34,4 @@ class LinkPredictor(LinkTask):
         class_wrapper = get_class_wrapper(self.predictor, LinkPredictor.__PACKAGES__, LinkScorer.__SCORE_TAIL__)
         link_predictor = class_wrapper(network.__o__, *self.args)
         matrix = link_predictor.call()
-        return java_matrix_to_list_of_lists(matrix)
+        return java_matrix_to_numpy(matrix)

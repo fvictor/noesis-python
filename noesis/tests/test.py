@@ -37,12 +37,12 @@ class Tests(TestCase):
     def test_closeness(self):
         closeness = self.ns.create_node_scorer('Closeness')
         result = closeness.compute(self.network)
-        self.assertEqual(len(result), 34)
+        self.assertEqual(result.shape, (34,))
 
     def test_katz_centrality(self):
         katz_centrality = self.ns.create_node_scorer('KatzCentrality')
         result = katz_centrality.compute(self.network)
-        self.assertEqual(len(result), 34)
+        self.assertEqual(result.shape, (34,))
 
     # Link prediction and scoring   
     def test_cn_score(self):
@@ -53,15 +53,14 @@ class Tests(TestCase):
     def test_cn_prediction(self):
         pa_scorer = self.ns.create_link_predictor('CommonNeighbors')
         result = pa_scorer.compute(self.network)
-        self.assertEqual(len(result), 34)
-        self.assertEqual(len(result[0]), 34)
+        self.assertEqual(result.shape, (34, 34))
 
     # Layout
     def test_layout(self):
         layout = self.ns.create_layout('Circular')
         x, y = layout.compute(self.network)
-        self.assertEqual(len(x), 34)
-        self.assertEqual(len(y), 34)
+        self.assertEqual(x.shape, (34,))
+        self.assertEqual(y.shape, (34,))
 
     @classmethod
     def tearDownClass(self):
