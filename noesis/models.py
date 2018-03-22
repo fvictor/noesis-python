@@ -1,9 +1,24 @@
 import javabridge as jb
-from .network import *
+from .network import Network
 from .utils import get_class_wrapper
 
 class NetworkModel(Network):
-    """A network generated using a network formation model.
+    """Network model.
+
+    This class implements the interface for network models, allowing to instantiate a network given
+    a network formation model.
+
+    Parameters
+    ----------
+    model : string
+        Network formation model used to generate the network. Currently supported models are
+        'ErdosRenyi', 'BarabasiAlbert', 'WattsStrogatz', 'Gilbert', 'PriceCitation', 'AnchoredRandom',
+        'ConnectedRandom', 'Complete', 'BinaryTree', 'Hypercube', 'Isolate', 'Mesh', 'Ring', 'Star',
+        'Tandem', and 'Toroidal'.
+
+    args: parameters
+        Parameters the for network formation model. These parameters are specific
+        for each network formation model and more details are provided in NOESIS documentation.
     
     """
 

@@ -3,7 +3,7 @@ Network input and output
 """
 
 import javabridge as jb
-from .network import *
+from .network import Network
 from .utils import get_class_wrapper
 
 class NetworkReader():
@@ -18,8 +18,8 @@ class NetworkReader():
         File format of the network reader. Currently supported formats are
         'ASCII', 'GDF', 'GML', 'GraphML', 'Pajek', 'SNAP', and 'SNAPGZ'.
 
-    args: list
-        List of parameters for the network reader. These parameters are specific
+    args: parameters
+        Parameters for the network reader. These parameters are specific
         for each file format and more details are provided in NOESIS documentation.
     
     """

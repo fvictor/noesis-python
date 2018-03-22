@@ -15,8 +15,8 @@ class Layout():
         'Random', 'KamadaKawai', 'FruchtermanReingold', 'Hierarchical', 'Linear', 'Mesh',
         'Radial',  BinaryTree', 'Circular', 'Hypercube', 'Star', and 'Toroidal'.
 
-    args: list
-        List of parameters for the layout algorithm. These parameters are specific
+    args: parameters
+        Parameters for the layout algorithm. These parameters are specific
         for each algorithm and more details are provided in NOESIS documentation.
     
     """

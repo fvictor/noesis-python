@@ -1,7 +1,8 @@
 from setuptools import setup
+from NOESIS import __version__
 
 setup(name='noesis',
-    version='0.2',
+    version=__version__,
     description='An open source framework for network data mining that provides a large collection of network analysis techniques',
     url='http://noesis.ikor.org/',
     author='The NOESIS project team',

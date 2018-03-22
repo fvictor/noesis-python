@@ -19,8 +19,8 @@ class CommunityDetector():
         - Spectral: 'UKMeans', 'NJW', and 'EIG1'.
         - Overlapping: 'BigClam'.
 
-    args: list
-        List of parameters for the community detector. These parameters are specific
+    args: parameters
+        Parameters for the community detector. These parameters are specific
         for each algorithm and more details are provided in NOESIS documentation.
     
     """
