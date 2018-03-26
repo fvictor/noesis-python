@@ -1,5 +1,3 @@
-__version__ = '0.2.1'
-
 from pkg_resources import resource_filename
 import javabridge as jb
 from .network import Network
@@ -9,6 +7,8 @@ from .links import LinkScorer, LinkPredictor
 from .nodes import NodeScorer
 from .models import NetworkModel
 from .layout import Layout
+
+__version__ = '0.2.1'
 
 class Noesis:
     """This class implements the entry point for the functionality provided by this package and handles the states of the Java
@@ -20,7 +20,7 @@ class Noesis:
 
     def __init__(self):
         try:
-            jb.start_vm(class_path=[*jb.JARS, resource_filename('noesis', Noesis.__DEFAULT_JAR_FILE__)], run_headless=False)
+            jb.start_vm(class_path=jb.JARS+[resource_filename('noesis', Noesis.__DEFAULT_JAR_FILE__)], run_headless=False)
         except:
             jb.kill_vm()
 
