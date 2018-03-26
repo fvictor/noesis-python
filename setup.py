@@ -1,5 +1,5 @@
 from setuptools import setup
-from NOESIS import __version__
+from noesis import __version__
 
 setup(name='noesis',
     version=__version__,

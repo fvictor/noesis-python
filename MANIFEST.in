@@ -1,0 +1,4 @@
+graft docs
+graft noesis/data
+graft noesis/tests
+global-exclude __pycache__ *.pyc
