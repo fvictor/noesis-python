@@ -54,3 +54,5 @@ ns.end()
 
 Always remember to call the *end* method of *Noesis* class to properly terminate the NOESIS session and finish the execution of your program.
 
+## Documentation
+The documentation of the project, which can be built using [SPHINX](http://www.sphinx-doc.org/), is located in the **doc** folder. A readily available up-to-date version of the documentation can be found at [http://noesis-python.readthedocs.io](http://noesis-python.readthedocs.io).
