@@ -10,19 +10,15 @@ class LinkTask():
     __SCORE_TAIL__ = 'Score'
 
 class LinkScorer(LinkTask):
-    """Link scorer.
-
-    This class implements the interface for link scorers. These algorithms
+    """This class implements the interface for link scorers. These algorithms
     compute a score for each link according to certain specific rules.
 
     Parameters
     ----------
     scorer : string
         Technique used to compute link scores. Currently supported techniques are:
-        - Local: 'CommonNeighbors', 'AdamicAdar', 'ResourceAllocation', 'PreferentialAttachment',
-            'HubDepressed', 'HubPromoted', 'Jaccard', 'LocalLeichtHolmeNewman', 'Salton', and 'Sorensen'.
-        - Global: 'Katz', 'RandomWalk', 'RandomWalkWithRestart', 'FlowPropagation', 'PseudoinverseLaplacian', 
-            'AverageCommuteTime', 'RandomForestKernel', and 'GlobalLeichtHolmeNewman'.
+        - Local: 'CommonNeighbors', 'AdamicAdar', 'ResourceAllocation', 'PreferentialAttachment', 'HubDepressed', 'HubPromoted', 'Jaccard', 'LocalLeichtHolmeNewman', 'Salton', and 'Sorensen'.
+        - Global: 'Katz', 'RandomWalk', 'RandomWalkWithRestart', 'FlowPropagation', 'PseudoinverseLaplacian', 'AverageCommuteTime', 'RandomForestKernel', and 'GlobalLeichtHolmeNewman'.
 
     args: parameters
         Parameters for the link scorer. These parameters are specific
@@ -57,19 +53,15 @@ class LinkScorer(LinkTask):
         return result
 
 class LinkPredictor(LinkTask):
-    """Link predictor.
-
-    This class implements the interface for link predictors. These algorithms
+    """This class implements the interface for link predictors. These algorithms
     compute a score for each pair of nodes according to certain specific rules.
 
     Parameters
     ----------
     scorer : string
         Technique used to compute node pair scores. Currently supported techniques are:
-        - Local: 'CommonNeighbors', 'AdamicAdar', 'ResourceAllocation', 'PreferentialAttachment',
-            'HubDepressed', 'HubPromoted', 'Jaccard', 'LocalLeichtHolmeNewman', 'Salton', and 'Sorensen'.
-        - Global: 'Katz', 'RandomWalk', 'RandomWalkWithRestart', 'FlowPropagation', 'PseudoinverseLaplacian', 
-            'AverageCommuteTime', 'RandomForestKernel', and 'GlobalLeichtHolmeNewman'.
+        - Local: 'CommonNeighbors', 'AdamicAdar', 'ResourceAllocation', 'PreferentialAttachment', 'HubDepressed', 'HubPromoted', 'Jaccard', 'LocalLeichtHolmeNewman', 'Salton', and 'Sorensen'.
+        - Global: 'Katz', 'RandomWalk', 'RandomWalkWithRestart', 'FlowPropagation', 'PseudoinverseLaplacian', 'AverageCommuteTime', 'RandomForestKernel', and 'GlobalLeichtHolmeNewman'.
 
     args: parameters
         Parameters for the link predictor. These parameters are specific

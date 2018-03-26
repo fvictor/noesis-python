@@ -7,9 +7,7 @@ from .network import Network
 from .utils import get_class_wrapper
 
 class NetworkReader():
-    """Network reader.
-
-    This class implements the interface for networks readers. These readers
+    """This class implements the interface for networks readers. These readers
     can load a network from a file following the specified file format.
 
     Parameters

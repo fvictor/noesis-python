@@ -3,9 +3,7 @@ import numpy as np
 from .utils import get_class_wrapper, java_one_row_matrix_to_list
 
 class CommunityDetector():
-    """Community detector.
-
-    This class implements the interface for community detectors. These algorithms
+    """This class implements the interface for community detectors. These algorithms
     find groups of densely connected nodes.
 
     Parameters

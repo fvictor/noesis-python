@@ -2,9 +2,7 @@ import javabridge as jb
 from .utils import get_class_wrapper, java_collection_to_numpy
 
 class Layout():
-    """Network layout.
-
-    This class implements the interface for network layouts. These algorithms
+    """This class implements the interface for network layouts. These algorithms
     compute visual coordinates for each node to obtain a more pleasant
     visualization of the network.
 

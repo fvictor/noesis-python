@@ -1,0 +1,403 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>APIss2 &#8212; NOESIS-Python  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-noesis.models">
+<span id="apiss2"></span><h1>APIss2<a class="headerlink" href="#module-noesis.models" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="noesis.models.NetworkModel">
+<em class="property">class </em><code class="descclassname">noesis.models.</code><code class="descname">NetworkModel</code><span class="sig-paren">(</span><em>model</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.models.NetworkModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class implements the interface for network models, allowing to instantiate a network given
+a network formation model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<em>string</em>) – Network formation model used to generate the network. Currently supported models are
+‘ErdosRenyi’, ‘BarabasiAlbert’, ‘WattsStrogatz’, ‘Gilbert’, ‘PriceCitation’, ‘AnchoredRandom’,
+‘ConnectedRandom’, ‘Complete’, ‘BinaryTree’, ‘Hypercube’, ‘Isolate’, ‘Mesh’, ‘Ring’, ‘Star’,
+‘Tandem’, and ‘Toroidal’.</li>
+<li><strong>args</strong> (<em>parameters</em>) – Parameters the for network formation model. These parameters are specific
+for each network formation model and more details are provided in NOESIS documentation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-noesis.network"></span><dl class="class">
+<dt id="noesis.network.Network">
+<em class="property">class </em><code class="descclassname">noesis.network.</code><code class="descname">Network</code><span class="sig-paren">(</span><em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class implements the interface for networks, providing methods to query and manipulate
+network nodes and links.</p>
+<dl class="method">
+<dt id="noesis.network.Network.add_link">
+<code class="descname">add_link</code><span class="sig-paren">(</span><em>source</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.add_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a directed link to the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source</strong> (<em>integer</em>) – Index of the source node.</li>
+<li><strong>target</strong> (<em>integer</em>) – Index of the target node.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.add_link2">
+<code class="descname">add_link2</code><span class="sig-paren">(</span><em>source</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.add_link2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an undirected link to the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source</strong> (<em>integer</em>) – Index of the source node.</li>
+<li><strong>target</strong> (<em>integer</em>) – Index of the target node.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.add_node">
+<code class="descname">add_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node to the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>index</strong> – Index of the added node.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.contains_link">
+<code class="descname">contains_link</code><span class="sig-paren">(</span><em>source</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.contains_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the network contains a link.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>integer</em>) – Index of the source node.</li>
+<li><strong>target</strong> (<em>integer</em>) – Index of the target node.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>is_contained</strong> – True if the network contains the link, False otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.contains_node">
+<code class="descname">contains_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.contains_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the network contains a node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node to check.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>is_contained</strong> – True if the network contains the node, False otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.degree">
+<code class="descname">degree</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the degree of a given node in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node from which to obtain the degree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>degree</strong> – Degree of the node.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.in_degree">
+<code class="descname">in_degree</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.in_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the in-degree of a given node in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node from which to obtain the in-degree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>degree</strong> – In-degree of the node.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.in_links">
+<code class="descname">in_links</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.in_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get in-links for a given node in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node from which to obtain in-links.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>links</strong> – List of indices of nodes with links to the specified node.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of integers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.is_directed">
+<code class="descname">is_directed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.is_directed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a network is directed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>is_directed</strong> – True if the network is directed, False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.links">
+<code class="descname">links</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of links in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>link_count</strong> – Number of links in the network.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.nodes">
+<code class="descname">nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of nodes in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>node_count</strong> – Number of nodes in the network.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.out_degree">
+<code class="descname">out_degree</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.out_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the out-degree of a given node in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node from which to obtain the out-degree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>degree</strong> – Out-degree of the node.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.out_links">
+<code class="descname">out_links</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.out_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get out-links for a given node in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node from which to obtain out-links.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>links</strong> – List of indices of nodes with links from the specified node.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of integers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.remove_link">
+<code class="descname">remove_link</code><span class="sig-paren">(</span><em>source</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.remove_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a directed link from the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source</strong> (<em>integer</em>) – Index of the source node.</li>
+<li><strong>target</strong> (<em>integer</em>) – Index of the target node.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.remove_link2">
+<code class="descname">remove_link2</code><span class="sig-paren">(</span><em>source</em>, <em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.remove_link2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an undirected link from the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source</strong> (<em>integer</em>) – Index of the source node.</li>
+<li><strong>target</strong> (<em>integer</em>) – Index of the target node.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.remove_node">
+<code class="descname">remove_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.remove_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a given node from the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>integer</em>) – Index of the node to remove.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="noesis.network.Network.set_directed">
+<code class="descname">set_directed</code><span class="sig-paren">(</span><em>directed</em><span class="sig-paren">)</span><a class="headerlink" href="#noesis.network.Network.set_directed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set network if network is directed or undirected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>directed</strong> (<em>boolean</em>) – True to set the network as directed, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, The NOESIS Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -2,9 +2,7 @@ import javabridge as jb
 from .utils import get_class_wrapper, java_collection_to_numpy
 
 class NodeScorer():
-    """Node scorer.
-
-    This class implements the interface for node scorers. These algorithms
+    """This class implements the interface for node scorers. These algorithms
     compute a score for each node according to certain specific rules.
 
     Parameters

@@ -3,9 +3,7 @@ from .network import Network
 from .utils import get_class_wrapper
 
 class NetworkModel(Network):
-    """Network model.
-
-    This class implements the interface for network models, allowing to instantiate a network given
+    """This class implements the interface for network models, allowing to instantiate a network given
     a network formation model.
 
     Parameters

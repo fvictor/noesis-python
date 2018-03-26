@@ -2,9 +2,7 @@ import javabridge as jb
 from .utils import get_class_wrapper, java_int_array_to_list
 
 class Network:
-    """Network.
-
-    This class implements the interface for networks, providing methods to query and manipulate
+    """This class implements the interface for networks, providing methods to query and manipulate
     network nodes and links.
     
     """

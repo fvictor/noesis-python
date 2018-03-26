@@ -1,0 +1,165 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>NOESIS for Python &#8212; NOESIS-Python  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="NOESIS" href="noesis.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <a class="reference internal image-reference" href="_images/noesis-logo.png"><img alt="_images/noesis-logo.png" class="align-center" src="_images/noesis-logo.png" style="width: 400pt;" /></a>
+<div class="section" id="noesis-for-python">
+<h1>NOESIS for Python<a class="headerlink" href="#noesis-for-python" title="Permalink to this headline">¶</a></h1>
+<p>Official Python API for <a class="reference external" href="http://noesis.ikor.org">NOESIS</a>, an open source framework for network data mining that provides a large collection of network analysis techniques, including the analysis of network structural properties, community detection methods, link scoring, and link prediction, as well as network visualization algorithms.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>From source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fvictor</span><span class="o">/</span><span class="n">noesis</span><span class="o">-</span><span class="n">python</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">noesis</span><span class="o">-</span><span class="n">python</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>From <a class="reference external" href="https://pypi.python.org/pypi/noesis">PyPi</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">noesis</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>NOESIS for Python provides simple and unified interfaces for most of the implemented techniques. The following example loads a network from a GML file and detects its communities using the Kernighan–Lin algorithm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">noesis</span> <span class="k">import</span> <span class="n">Noesis</span>
+
+<span class="n">ns</span> <span class="o">=</span> <span class="n">Noesis</span><span class="p">()</span>
+
+<span class="n">network_reader</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">create_network_reader</span><span class="p">(</span><span class="s1">&#39;GML&#39;</span><span class="p">)</span>
+<span class="n">network</span> <span class="o">=</span> <span class="n">network_reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my_network.gml&#39;</span><span class="p">)</span>
+
+<span class="n">community_detector</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">create_community_detector</span><span class="p">(</span><span class="s1">&#39;KernighanLin&#39;</span><span class="p">)</span>
+<span class="n">communities</span> <span class="o">=</span> <span class="n">community_detector</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">nodes</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Node </span><span class="si">{}</span><span class="s1"> belongs to community </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">communities</span><span class="p">[</span><span class="n">node</span><span class="p">]))</span>
+
+<span class="n">ns</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The following example generates a network of 20 nodes and 100 links using the Erdös–Rényi model and computes the PageRank score of each node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">noesis</span> <span class="k">import</span> <span class="n">Noesis</span>
+
+<span class="n">ns</span> <span class="o">=</span> <span class="n">Noesis</span><span class="p">()</span>
+
+<span class="n">network</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">create_network_from_model</span><span class="p">(</span><span class="s1">&#39;ErdosRenyi&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">pagerank_scorer</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">create_node_scorer</span><span class="p">(</span><span class="s1">&#39;PageRank&#39;</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">pagerank_scorer</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">nodes</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Node </span><span class="si">{}</span><span class="s1"> has a PageRank score of </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">scores</span><span class="p">[</span><span class="n">node</span><span class="p">]))</span>
+
+<span class="n">ns</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Always remember to call the <em>end</em> method of <em>Noesis</em> class to properly terminate the NOESIS session and finish the execution of your program.</p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="noesis.html">     Noesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">     Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodes.html">     Node scores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">     Link scores and prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communities.html">     Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">     Network input/output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layouts.html">     Network layouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">     Network formation models</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">NOESIS for Python</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="noesis.html" title="next chapter">NOESIS</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, The NOESIS Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
