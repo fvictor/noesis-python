@@ -21,6 +21,17 @@ class Tests(TestCase):
         self.assertEqual(len(self.network.out_links(0)), 16)
         self.assertEqual(self.network.contains_link(5,6), True)
 
+    def test_read_network(self):
+        net = self.ns.create_network()
+        self.assertEqual(net.nodes(), 0)
+        self.assertEqual(net.links(), 0)
+        source = net.add_node()
+        target = net.add_node()
+        net.add_link(source, target)
+        self.assertEqual(net.nodes(), 2)
+        self.assertEqual(net.links(), 1)
+        self.assertEqual(net.contains_link(source, target), True)
+
     # Models
     def test_erdos_renyi_model(self):
         erdos_renyi_network = self.ns.create_network_from_model('ErdosRenyi', 100, 300)

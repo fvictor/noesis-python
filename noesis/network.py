@@ -139,6 +139,7 @@ class Network:
         """
         index = self.nodes()
         self.__o__.add(index)
+        return index
 
     def remove_node(self, node):
         """Remove a given node from the network.
