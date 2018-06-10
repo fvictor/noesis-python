@@ -1,7 +1,7 @@
-from unittest import TestCase
+import unittest
 from noesis import Noesis
 
-class Tests(TestCase):
+class Tests(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
