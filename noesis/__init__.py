@@ -8,7 +8,7 @@ from .nodes import NodeScorer
 from .models import NetworkModel
 from .layout import Layout
 
-__version__ = '0.2.3'
+__version__ = '0.2.7'
 
 class Noesis:
     """This class implements the entry point for the functionality provided by this package and handles the states of the Java
