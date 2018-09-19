@@ -1,15 +1,16 @@
 Official Python API for [NOESIS](http://noesis.ikor.org), an open source framework for network data mining that provides a large collection of network analysis techniques, including the analysis of network structural properties, community detection methods, link scoring, and link prediction, as well as network visualization algorithms.
 
 ## Installation
+From [PyPi](https://pypi.python.org/pypi/noesis):
+```
+pip install noesis
+```
+
 From source:
 ```
 git clone https://github.com/fvictor/noesis-python.git
 cd noesis-python
 python setup.py install
-```
-From [PyPi](https://pypi.python.org/pypi/noesis):
-```
-pip install noesis
 ```
 
 ## Getting started
