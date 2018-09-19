@@ -11,7 +11,7 @@ class Layout():
     layout : string
         Technique used to compute the layout. Currently supported techniques are
         'Random', 'KamadaKawai', 'FruchtermanReingold', 'Hierarchical', 'Linear', 'Mesh',
-        'Radial',  BinaryTree', 'Circular', 'Hypercube', 'Star', and 'Toroidal'.
+        'Radial',  'BinaryTree', 'Circular', 'Hypercube', 'Star', and 'Toroidal'.
 
     args: parameters
         Parameters for the layout algorithm. These parameters are specific
@@ -38,11 +38,14 @@ class Layout():
         y :  ndarray, shape (num_nodes,)
             Vector of y coordinates for each node.
         """
+        random_wrapper = get_class_wrapper('Random', ['noesis.algorithms.visualization'], 'Layout')
         class_wrapper = get_class_wrapper(self.layout, ['noesis.algorithms.visualization'], 'Layout')
+        rnd_layout = random_wrapper()
         layout = class_wrapper(*self.args)
         att_wrapper = get_class_wrapper('Attribute', ['noesis'])
         x = att_wrapper('x')
         y = att_wrapper('y')
+        rnd_layout.layout(network.__o__, x, y)
         layout.layout(network.__o__, x, y)
         transform = lambda v: float(v.doubleValue())
         x = java_collection_to_numpy(x, transform)

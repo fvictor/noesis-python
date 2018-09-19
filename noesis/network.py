@@ -82,7 +82,8 @@ class Network:
         links :  list of integers
             List of indices of nodes with links from the specified node.
         """
-        return java_int_array_to_list(self.__o__.outLinks(node))
+        links = self.__o__.outLinks(node)
+        return [] if links is None else java_int_array_to_list(links)
 
     def degree(self, node):
         """Get the degree of a given node in the network.

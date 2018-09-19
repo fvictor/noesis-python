@@ -10,7 +10,7 @@ class Tests(unittest.TestCase):
         self.network = network_reader.read('noesis/data/karate.gml')
 
     # Network
-    def test_network(self):
+    def test_read_network(self):
         self.assertEqual(self.network.is_directed(), False)
         self.assertEqual(self.network.nodes(), 34)
         self.assertEqual(self.network.links(), 156)
@@ -21,16 +21,20 @@ class Tests(unittest.TestCase):
         self.assertEqual(len(self.network.out_links(0)), 16)
         self.assertEqual(self.network.contains_link(5,6), True)
 
-    def test_read_network(self):
+    def test_network(self):
         net = self.ns.create_network()
         self.assertEqual(net.nodes(), 0)
         self.assertEqual(net.links(), 0)
+
         source = net.add_node()
         target = net.add_node()
         net.add_link(source, target)
         self.assertEqual(net.nodes(), 2)
         self.assertEqual(net.links(), 1)
         self.assertEqual(net.contains_link(source, target), True)
+
+        new = net.add_node()
+        self.assertEqual(len(net.out_links(new)), 0)
 
     # Models
     def test_erdos_renyi_model(self):
@@ -67,7 +71,19 @@ class Tests(unittest.TestCase):
         self.assertEqual(result.shape, (34, 34))
 
     # Layout
-    def test_layout(self):
+    def test_layout_fruchterman_reingold(self):
+        layout = self.ns.create_layout('FruchtermanReingold')
+        x, y = layout.compute(self.network)
+        self.assertEqual(x.shape, (34,))
+        self.assertEqual(y.shape, (34,))
+
+    def test_layout_hierarchical(self):
+        layout = self.ns.create_layout('Hierarchical')
+        x, y = layout.compute(self.network)
+        self.assertEqual(x.shape, (34,))
+        self.assertEqual(y.shape, (34,))
+
+    def test_layout_circular(self):
         layout = self.ns.create_layout('Circular')
         x, y = layout.compute(self.network)
         self.assertEqual(x.shape, (34,))
